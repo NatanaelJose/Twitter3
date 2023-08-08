@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const Button = (title) => {
+const Button = ({ title }) => {
     return (<button className="w-full h-14 hover:bg-slate-200 text-base"><Link>{title}</Link></button>
     )
 }
