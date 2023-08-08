@@ -1,17 +1,19 @@
-import './App.css'
-import Menu from './components/Menu.jsx'
-import Feed from './components/Feed.jsx'
-import Happening from './components/Happening'
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import './App.css';
+import Home from './components/Home';
+import Profile from './components/Profile'
 
 function App() {
-
   return (
-    <div className="flex flex-row">
-      <Menu />
-      <Feed />
-      <Happening />
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

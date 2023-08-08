@@ -4,12 +4,10 @@ import Happening from './Happening.jsx'
 
 export default function Home() {
     return (
-        <>
-            <div className='flex flex-row w-screen'>
-                <Menu />
-                <Feed />
-                <Happening />
-            </div>
-        </>
+        <div className="flex flex-row">
+            <Menu />
+            <Feed />
+            <Happening />
+        </div>
     )
 }
