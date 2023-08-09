@@ -7,8 +7,6 @@ const Button = ({ title, activate, isActive }) => {
 }
 const ForYou = () => {
     const [activeButton, setActiveButton] = useState(true);
-    const FY = document.getElementById('FY');
-    const FW = document.getElementById('FW');
 
     function handleClick(id) {
         setActiveButton(id == 0)
