@@ -5,14 +5,14 @@ const NavItem = ({ icon, title, route }) => {
     return (
         <div className='flex flex-row items-center cursor-pointer mb-3 transition-transform duration-300 ease-in-out transform hover:scale-125 hover:text-sky-600 text-stone-800'><Link to={route} className='flex flex-row'>
             {icon}
-            <h2 className='flex items-center w-full pl-5 text-start font-semibold text-lg'>{title}</h2></Link>
+            <h2 className='flex items-center w-full pl-5 text-start font-bold font-sans text-lg'>{title}</h2></Link>
         </div>
     );
 };
 
 export default function Menu() {
     return (
-        <div className="w-1/4 h-screen bg-white opacity-7 flex flex-col pt-4 pl-12 border-r border-r-gray-200">
+        <div className="z-50 w-1/4 h-screen fixed bg-white opacity-7 flex flex-col pt-4 pl-12 border-r border-r-gray-200">
             <div className="h-106 w-full">
                 <FaTwitter size={48} className='text-sky-600' />
             </div>
