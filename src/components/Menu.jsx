@@ -12,7 +12,7 @@ const NavItem = ({ icon, title, route }) => {
 
 export default function Menu() {
     return (
-        <div className="z-50 w-1/4 h-screen fixed bg-white opacity-7 flex flex-col pt-4 pl-12 border-r border-r-gray-200">
+        <div className="w-1/4 h-screen left-0 fixed bg-white opacity-7 flex flex-col pt-4 pl-12 border-r border-r-gray-200">
             <div className="h-106 w-full">
                 <FaTwitter size={48} className='text-sky-600' />
             </div>

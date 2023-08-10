@@ -4,7 +4,7 @@ import Happening from './Happening.jsx'
 
 export default function Home() {
     return (
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-center">
             <Menu />
             <Feed />
             <Happening />
