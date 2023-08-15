@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { auth } from "./services/firebaseConfig";
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
+import { auth, signInWithGoogle } from "./services/firebaseConfig";
 import defaultProfilePic from '../assets/images/default-profile-pic.png'
 
 
@@ -57,9 +56,16 @@ export const ProfilePic = () => {
 }
 
 export const SignIn = ({ src, loginText }) => {
-    const [SignInWithGoogle] = useSignInWithGoogle(auth);
+    const handleGoogleSignIn = async () => {
+        try {
+            const user = await signInWithGoogle();
+            console.log('Usuário logado:', user);
+        } catch (error) {
+            console.error('Erro ao fazer login com o Google:', error);
+        }
+    };
     return (
-        <div className='w-4/6 flex flex-row justify-center items-center py-3 font-sans font-semibold border border-solid shadow-md rounded-lg mb-3 transition duration-300 ease-in-out hover:bg-gray-100 cursor-pointer shadow-slate-300 ' onClick={() => { SignInWithGoogle() }}>
+        <div className='w-4/6 flex flex-row justify-center items-center py-3 font-sans font-semibold border border-solid shadow-md rounded-lg mb-3 transition duration-300 ease-in-out hover:bg-gray-100 cursor-pointer shadow-slate-300 ' onClick={handleGoogleSignIn}>
             <img className='w-12 h-12 object-cover' src={src} />
             <button className="ml-4 text-lg"> {loginText} </button>
         </div>
