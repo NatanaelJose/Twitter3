@@ -1,10 +1,8 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { auth } from "./services/firebaseConfig"
-import { useAuthState } from "react-firebase-hooks/auth"
-import { SignIn } from "./Profile"
-import googleSvg from '../assets/svg/google.svg';
-import envelope from '../assets/svg/square-envelope-solid.svg'
+import { DoTheLogin } from "./Profile"
+
 
 const Button = ({ title, activate, isActive }) => {
     return (
@@ -20,21 +18,8 @@ const TimeLine = () => {
     );
 }
 
-
-const DoTheLogin = () => {
-    return (
-        <div className="h-screen pt-14 flex flex-col items-center bg-slate-100">
-            <div className="w-10/12 h-fit pb-10 rounded-md flex flex-col items-center bg-white  shadow-md shadow-gray-300">
-                <h1 className="font-sans text text-center mt-10 mb-5 text-2xl font-medium">Faça seu Login para ter Acesso ao Site!</h1>
-                <SignIn src={googleSvg} loginText="Logar com o Google!" />
-                <SignIn src={envelope} loginText="Logar com o E-mail!" />
-            </div>
-        </div>
-    )
-}
-
 const ForYou = () => {
-    const [user] = useAuthState(auth);
+    const user = auth.currentUser;
     const [activeButton, setActiveButton] = useState(true);
 
     function handleClick(id) {
