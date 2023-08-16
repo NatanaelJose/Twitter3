@@ -20,19 +20,36 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const databaseApp = getFirestore(app);
-
-const provider = new GoogleAuthProvider();
-provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-auth.useDeviceLanguage();
-
 export const signInWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
+    provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+    auth.useDeviceLanguage();
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
     return user;
+  } catch (error) {
+    if (error instanceof auth.AuthError) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData?.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    } else {
+      console.error("Erro durante o login:", error);
+    }
+    return null;
+  }
+};
+export const createAccountwithEmail = async (email, password) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
   } catch (error) {
     if (error instanceof auth.AuthError) {
       const errorCode = error.code;
