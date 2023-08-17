@@ -2,6 +2,7 @@ import { FaTwitter, FaHome, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { auth } from './services/firebaseConfig';
 import { ProfilePic } from './Profile'
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const PostButton = () => {
     return (<button className="w-4/5 h-12 mt-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-3xl"> Post </button>)
@@ -17,7 +18,7 @@ const NavItem = ({ icon, title, route }) => {
 };
 
 function Menu() {
-    const user = auth.currentUser;
+    const [user] = useAuthState(auth);
     return (
         <div className="w-1/4 h-screen left-0 fixed bg-white opacity-7 flex flex-col pt-4 pl-12 border-r border-r-gray-200">
             <div className="h-106 w-full">

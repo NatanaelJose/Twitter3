@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -20,6 +21,15 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const databaseApp = getFirestore(app);
+export const signOutAccount = async () => {
+  try {
+    await signOut(auth);
+    // O usuário foi desconectado com sucesso
+    // Você pode fazer qualquer tratamento adicional aqui, como redirecionar o usuário para uma página de login.
+  } catch (error) {
+    console.error("Erro ao fazer logout:", error);
+  }
+};
 export const signInWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();

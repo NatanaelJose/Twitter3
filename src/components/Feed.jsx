@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { auth } from "./services/firebaseConfig"
 import { DoTheLogin } from "./Profile"
+import { useAuthState } from "react-firebase-hooks/auth"
 
 
 const Button = ({ title, activate, isActive }) => {
@@ -19,7 +20,7 @@ const TimeLine = () => {
 }
 
 const ForYou = () => {
-    const user = auth.currentUser;
+    const [user, loading] = useAuthState(auth)
     const [activeButton, setActiveButton] = useState(true);
 
     function handleClick(id) {
