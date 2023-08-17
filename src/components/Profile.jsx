@@ -5,7 +5,6 @@ import googleSvg from '../assets/svg/google.svg';
 import envelope from '../assets/svg/square-envelope-solid.svg'
 import { useAuthState } from "react-firebase-hooks/auth";
 
-//Profile pic
 function getFirstName(user) {
     const nameParts = user.split(" ");
     if (nameParts.length > 0) {
@@ -56,7 +55,6 @@ export const ProfilePic = () => {
         </div >
     )
 }
-
 export const SignInButton = ({ src, loginText, activate }) => {
     return (
         <div className='w-4/6 flex flex-row justify-center items-center py-3 font-sans font-semibold border border-solid shadow-md rounded-lg mb-3 transition duration-300 ease-in-out hover:bg-gray-100 cursor-pointer shadow-slate-300 ' onClick={activate}>

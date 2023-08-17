@@ -52,7 +52,7 @@ export const signInWithGoogle = async () => {
     return null;
   }
 };
-export const createAccountwithEmail = async (email, password) => {
+export const createAccountwithEmail = async (auth, email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -60,6 +60,7 @@ export const createAccountwithEmail = async (email, password) => {
       password
     );
     const user = userCredential.user;
+    return user;
   } catch (error) {
     if (error instanceof auth.AuthError) {
       const errorCode = error.code;
