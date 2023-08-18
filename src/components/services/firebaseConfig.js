@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -55,6 +56,28 @@ export const signInWithGoogle = async () => {
 export const createAccountwithEmail = async (auth, email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+    return user;
+  } catch (error) {
+    if (error instanceof auth.AuthError) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData?.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    } else {
+      console.error("Erro durante o login:", error);
+    }
+    return null;
+  }
+};
+
+export const loginAccountwithEmail = async (auth, email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
       password
